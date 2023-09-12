@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const navToggle = document.querySelector(".nav-toggle");
     const navMenu = document.querySelector(".nav-menu");
     const overlay = document.querySelector(".overlay");
+    const navClose = document.querySelector("#navClose"); // ×ボタン
+
 
     // ナビゲーションを開く関数
     function openNavigation() {
@@ -37,4 +39,10 @@ document.addEventListener("DOMContentLoaded", function () {
             closeNavigation();
         }
     });
+
+// ×ボタンをクリックした際の処理
+navClose.addEventListener("click", function () {
+    closeNavigation();
+});
+
 });

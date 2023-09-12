@@ -1,47 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./CSS/styles.css">
     <link rel="stylesheet" href="./CSS/navigation.css">
     <script src="./JS/navigation.js"></script>
-    <title>アプリ宣伝と自己紹介</title>
+    <title>fiasアプリ紹介ページ</title>
 </head>
+
 <body>
 
-    <!-- ハンバーガーアイコン -->
-    <div id="navToggle" class="nav-toggle">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-    </div>
 
-    <!-- ナビゲーションメニュー -->
-    <nav id="navMenu" class="nav-menu">
-        <ul>
-            <li><a href="index.html">TOP</a></li>
-            <li><a href="release.html">リリースノート</a></li>
-            <li><a href="saiyo.html">問い合わせ</a></li>
-        </ul>
-    </nav>
-    <div class="overlay"></div>
 
     <header>
-        <h1>アプリ宣伝と自己紹介</h1>
+        <div id="header-container"></div>
+        <!-- ハンバーガーアイコン -->
+        <div id="navToggle" class="nav-toggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <!-- ナビゲーションメニュー -->
+        <nav id="navMenu" class="nav-menu">
+            <div id="navClose" class="close-button">✕</div>
+            <ul>
+                <li><a href="index.html">TOP</a></li>
+            </ul>
+        </nav>
+        <div class="overlay"></div>
+        
+
+        <h1>fiasアプリ紹介ページ</h1>
     </header>
-    
+
     <section id="releaseInfo">
         <div class="container">
             <h2>お知らせ</h2>
             <p>2023/09/10 リリース</p>
         </div>
     </section>
-    
+
     <section id="self-introduction">
         <div class="container">
             <h2>自己紹介</h2>
-            <p>自己紹介の詳細は<a href="zikosyokai.html">こちら</a>からご覧いただけます。</p>
+            <p>チームfiasと申します。スマホアプリを中心に開発などしています。</p>
             <p><a href="https://www.amazon.co.jp/hz/wishlist/ls/177WYFGR2KE04">欲しいものリスト</a></p>
         </div>
     </section>
@@ -50,22 +57,40 @@
     <section id="app-introduction">
         <div class="container">
             <h2>＜アプリ紹介＞</h2>
-            
-            <h3>DDRハイスピ計算機</h3>
-            <div class="app">
-                <img src="./icon/ddrCalI_icon.png" alt="DDRハイスピ計算機">
-                <p>アプリAの説明をここに追加します。<br> <a href="https://apps.apple.com/jp/app/ddr%E3%83%8F%E3%82%A4%E3%82%B9%E3%83%94%E8%A8%88%E7%AE%97%E6%A9%9F/id6447161158">iOS</a><a> / </a><a href="https://play.google.com/store/apps/details?id=com.fias.ddrhighspeed">Android</a></p>
-            </div>
+            <div>
+                <h3>DDRハイスピ計算機</h3>
+                <div class="app">
+                    <img src="./icon/ddrCalI_icon.png" alt="DDRハイスピ計算機">
+                    <p>DDRのBPM・ハイスピード設定を一目で確認できるアプリです。</p>
+                </div>
+                <div class="batchIcon">
+                    <a href="https://apps.apple.com/jp/app/ddr%E3%83%8F%E3%82%A4%E3%82%B9%E3%83%94%E8%A8%88%E7%AE%97%E6%A9%9F/id6447161158"
+                        target="_blank"><img src="./icon/appstore_black.svg" alt="DDRハイスピ計算機"></a>
+                    <a href="https://play.google.com/store/apps/details?id=com.fias.ddrhighspeed" target="_blank">
+                        <img src="./icon/android.png" alt="DDRハイスピ計算機"></a>
+                </div>
 
-            <h4>DDR Score Manager A</h4>
-            <div class="app">
-                <img src="./icon/ddrScore_icon.png" alt="DDR Score Manager A">
-                
-                <p>アプリBの説明をここに追加します。<br> <a href="https://apps.apple.com/jp/app/ddr-score-manager-a/id1100126073">iOS</a><a> / </a><a href="https://play.google.com/store/apps/details?id=jp.linanfine.dsma">Android</a></p>
+            </div>
+            <div>
+                <h4>DDR Score Manager A</h4>
+                <div class="app">
+                    <img src="./icon/ddrScore_icon.png" alt="DDR Score Manager A">
+
+                    <p>DDR A のスコアマネージャです。<br>
+                        スコア・フルコンの状態を管理できます。<br>
+                        公式サイトからのスコア取得にも対応しています。</p>
+                </div>
+                <div class="batchIcon">
+                    <a href="https://apps.apple.com/jp/app/ddr-score-manager-a/id1100126073" target="_blank"><img
+                            src="./icon/appstore_black.svg" alt="DDRハイスピ計算機"></a>
+                    <a href="https://play.google.com/store/apps/details?id=jp.linanfine.dsma" target="_blank"><img
+                            src="./icon/android.png" alt="DDRハイスピ計算機"></a>
+                </div>
+
             </div>
         </div>
     </section>
-    
+
     <section id="contact">
         <div class="container">
             <h2>お問い合わせ先</h2>
@@ -73,4 +98,5 @@
         </div>
     </section>
 </body>
+
 </html>

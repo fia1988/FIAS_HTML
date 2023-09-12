@@ -1,7 +1,7 @@
 /* navigation.css */
 .nav-toggle {
     position: absolute;
-    top: 20px;
+    top: 25px;
     left: 20px;
     cursor: pointer;
     display: block;
@@ -16,6 +16,15 @@
 }
 
 
+/* ×ボタンのスタイル */
+.close-button {
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    cursor: pointer;
+    font-size: 35px;
+    color: #ffffff; /* ×ボタンの色 */
+}
 
 /* ナビゲーションメニューを隠す */
 .nav-menu {
@@ -33,13 +42,15 @@
 }
 
 .nav-menu ul {
+    margin-top: 75px;
     list-style-type: none;
     padding: 0;
 }
 
 .nav-menu ul li {
-    padding: 10px 0;
-    text-align: center;
+    padding: 10px 0 10px 15px;
+    margin-left: 10;
+    text-align: left;
 }
 
 .nav-menu ul li a {
