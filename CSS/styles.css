@@ -24,6 +24,25 @@ body {
     margin-bottom: 3px;
 }
 
+#releaseInfo h2 {
+    margin-bottom: 10px; /* 任意の適切なマージン値を設定 */
+}
+
+#releaseInfo p {
+    margin-top: 5px;
+    margin-left: 15px;
+}
+
+#self-introduction h2 {
+    margin-bottom: 10px; /* 任意の適切なマージン値を設定 */
+}
+
+#self-introduction p {
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+
 /* ヘッダースタイル */
 header {
     background-color: #333;
@@ -40,7 +59,7 @@ section {
     margin: 20px 0;
     padding: 0px;
     background-color: #1f1f1f; /* セクションの背景色 */
-    border-radius: 30px;
+    border-radius: 0px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -48,6 +67,12 @@ section h2 {
     font-size: 24px;
 }
 
+
+.selfIntroduction {
+    display: flex;
+    margin-left: 15px;
+    
+}
 
 /*リリース*/
 .release {
@@ -77,6 +102,7 @@ section h2 {
 
 .batchIcon img {
     height: 40px;
+    margin-top: 25px;
     margin-left: 25px;
     margin-right: 5px;
 }
@@ -91,6 +117,11 @@ section h2 {
 #contact h2 {
     font-size: 24px;
     color: #ffffff;
+    margin-bottom: 0px;
 }
 
+#contact p {
+    margin-top: 10px;
+    margin-left: 15px;
+}
 
