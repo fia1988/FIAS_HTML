@@ -10,7 +10,7 @@ body {
 .container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
 }
 
 .container h3 {
@@ -40,7 +40,7 @@ section {
     margin: 20px 0;
     padding: 0px;
     background-color: #1f1f1f; /* セクションの背景色 */
-    border-radius: 5px;
+    border-radius: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -84,7 +84,7 @@ section h2 {
 /* お問い合わせスタイル */
 #contact {
     background-color: #333;
-    padding: 20px 0;
+    padding: 0px 0;
     text-align: left;
 }
 
