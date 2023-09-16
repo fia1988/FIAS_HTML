@@ -7,6 +7,11 @@ body {
     color: #ffffff; /* テキストの白色 */
 }
 
+
+a{
+    color:aqua
+}
+
 .container {
     max-width: 800px;
     margin: 0 auto;
