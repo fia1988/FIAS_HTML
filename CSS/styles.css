@@ -29,6 +29,12 @@ a{
     margin-bottom: 3px;
 }
 
+
+.releaseInfoAREA {
+    max-height: 150px; /* スクロール可能な最大の高さを設定 */
+    overflow-y: auto; /* 縦方向にスクロールバーを表示 */
+}
+
 #releaseInfo h2 {
     margin-bottom: 10px; /* 任意の適切なマージン値を設定 */
 }
