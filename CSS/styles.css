@@ -102,6 +102,22 @@ section h2 {
     margin: 20px 20;
 }
 
+.appdetails {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    margin-left: 25px;
+    margin: 10px 25px;
+}
+
+.appdetails ul {
+    display: flex;
+    
+    margin-top: 10px;
+    margin-left: -5px;
+
+}
+
 .app img {
     width: 80px;
     height: 80px;
@@ -114,7 +130,7 @@ section h2 {
 
 .batchIcon img {
     height: 40px;
-    margin-top: 25px;
+    margin-top: 10px;
     margin-left: 25px;
     margin-right: 5px;
 }
