@@ -118,6 +118,12 @@ section h2 {
 
 }
 
+.new-update {
+    margin-left: 25px;
+    margin-top: 10px; /* テキストと他の要素の間隔を調整 */
+    color:yellow
+}
+
 .app img {
     width: 80px;
     height: 80px;
