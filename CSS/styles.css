@@ -40,27 +40,6 @@ a{
 
 
 
-
-
-
-.releaseInfoAREA::-webkit-scrollbar {
-    width: 30px; /* スクロールバーの幅 */
-}
-
-.releaseInfoAREA::-webkit-scrollbar-track {
-    background: #dbe5e9b9; /* スクロールバートラックの色 */
-}
-
-.releaseInfoAREA::-webkit-scrollbar-thumb {
-    background-color: #000; /* スクロールバーサムの色 */
-}
-
-
-
-
-
-
-
 #releaseInfo h2 {
     margin-bottom: 10px; /* 任意の適切なマージン値を設定 */
 }
