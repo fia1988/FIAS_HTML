@@ -35,7 +35,7 @@ a{
     
     overflow-y: scroll; /* 常にスクロールバーを表示 */
     border: 1px solid #000; /* 罫線の幅、スタイル、色を指定 */
-    background-color: #18282eb9; /* スクロール範囲の色 */
+    background-color: #333; /* スクロール範囲の色 */
 }
 
 
