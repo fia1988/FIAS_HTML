@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人のフレアスキル帳 デモ</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .stats { background-color: #f0f0f0; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+        .nav-link { display: inline-block; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>個人のフレアスキル帳 (デモ)</h1>
+        <div class="stats">
+            <h2>統計情報</h2>
+            <p id="totalFlareSkill">トータルフレアスキル: 計算中...</p>
+            <p id="grade">グレード: 計算中...</p>
+        </div>
+        <div id="tables"></div>
+        <a href="index.html" class="nav-link">ランキングページへ戻る</a>
+    </div>
+
+    <script>
+        const songs = {
+            CLASSIC: [
+                { title: 'POSSESSION', level: 17, flareRank: 'IX', score: 980510, flareSkill: 977 },
+                { title: 'MAX 300', level: 15, flareRank: 'EX', score: 993900, flareSkill: 960 },
+                { title: 'roppongi EVOLVED ver.A', level: 15, flareRank: 'EX', score: 997720, flareSkill: 960 },
+                { title: 'roppongi EVOLVED ver.B', level: 15, flareRank: 'EX', score: 993580, flareSkill: 960 },
+                { title: 'SUPER SAMURAI', level: 15, flareRank: 'EX', score: 990000, flareSkill: 960 },
+                { title: 'Take A Step Forward', level: 15, flareRank: 'EX', score: 0, flareSkill: 960 },
+                { title: 'UNBELIEVABLE (Sparky remix)', level: 15, flareRank: 'EX', score: 990970, flareSkill: 960 },
+                { title: "I'm so Happy", level: 16, flareRank: 'IX', score: 972780, flareSkill: 954 },
+                { title: 'MAX 300 (Super-Max-Me Mix)', level: 16, flareRank: 'IX', score: 980370, flareSkill: 954 },
+                { title: '冥', level: 16, flareRank: 'IX', score: 989060, flareSkill: 954 },
+                { title: 'on the bounce', level: 16, flareRank: 'IX', score: 979270, flareSkill: 954 },
+                { title: 'Pierce The Sky', level: 16, flareRank: 'IX', score: 979272, flareSkill: 954 },
+                { title: 'Sakura Sunrise', level: 16, flareRank: 'IX', score: 976200, flareSkill: 954 },
+                { title: 'snow prism', level: 16, flareRank: 'IX', score: 977200, flareSkill: 954 },
+                { title: '隅田川夏恋歌', level: 16, flareRank: 'IX', score: 984910, flareSkill: 954 },
+                { title: 'Trim', level: 16, flareRank: 'IX', score: 968870, flareSkill: 954 },
+                { title: 'BRILLIANT 2U (AKBK MIX)', level: 15, flareRank: 'IX', score: 992960, flareSkill: 924 },
+                { title: 'Horatio', level: 15, flareRank: 'IX', score: 990370, flareSkill: 924 },
+                { title: '紅焔', level: 15, flareRank: 'IX', score: 980530, flareSkill: 924 },
+                { title: 'ZETA～素数の世界と超越者～', level: 15, flareRank: 'IX', score: 982200, flareSkill: 924 },
+                { title: 'POSSESSION', level: 14, flareRank: 'EX', score: 997170, flareSkill: 920 },
+                { title: 'Amalgamation', level: 15, flareRank: 'VIII', score: 981440, flareSkill: 888 },
+                { title: 'Cosmic Hurricane', level: 15, flareRank: 'VIII', score: 985680, flareSkill: 888 },
+                { title: 'Anti-Matter', level: 14, flareRank: 'IX', score: 991770, flareSkill: 885 },
+                { title: 'B4U ("VOLTAGE" Special)', level: 14, flareRank: 'IX', score: 994960, flareSkill: 885 },
+                { title: 'FIRE FIRE', level: 14, flareRank: 'IX', score: 993790, flareSkill: 885 },
+                { title: '不沈艦CANDY', level: 14, flareRank: 'IX', score: 985660, flareSkill: 885 },
+                { title: '革命(X-Special)', level: 14, flareRank: 'IX', score: 992140, flareSkill: 885 },
+                { title: "KEEP ON MOVIN' (Y&Co. DJ BOSS remix)", level: 14, flareRank: 'IX', score: 993880, flareSkill: 885 },
+                { title: 'Sakura Sunrise', level: 14, flareRank: 'IX', score: 986890, flareSkill: 885 }
+            ],
+            WHITE: [
+                { title: 'Life is beautiful', level: 16, flareRank: 'EX', score: 995420, flareSkill: 992 },
+                { title: 'POSSESSION(EDP Live Mix)', level: 16, flareRank: 'EX', score: 982220, flareSkill: 992 },
+                { title: 'Elemental Creation', level: 17, flareRank: 'IX', score: 972170, flareSkill: 977 },
+                { title: 'Air Heroes', level: 15, flareRank: 'EX', score: 995070, flareSkill: 960 },
+                { title: 'ALGORITHM', level: 15, flareRank: 'EX', score: 991120, flareSkill: 960 },
+                { title: 'Cleopatrysm', level: 15, flareRank: 'EX', score: 991760, flareSkill: 960 },
+                { title: 'IN BETWEEN', level: 15, flareRank: 'EX', score: 991470, flareSkill: 960 },
+                { title: 'Sakura Reflection', level: 15, flareRank: 'EX', score: 991000, flareSkill: 960 },
+                { title: 'ZEPHYRANTHES', level: 15, flareRank: 'EX', score: 991620, flareSkill: 960 },
+                { title: 'ANNIVERSARY .::.:.← → ↑ →', level: 16, flareRank: 'IX', score: 980120, flareSkill: 954 },
+                { title: 'Boss Rush', level: 16, flareRank: 'IX', score: 965350, flareSkill: 954 },
+                { title: '打打打打打打打打打打', level: 16, flareRank: 'IX', score: 985140, flareSkill: 954 },
+                { title: 'GAIA', level: 16, flareRank: 'IX', score: 991390, flareSkill: 954 },
+                { title: 'Ishtar', level: 16, flareRank: 'IX', score: 910030, flareSkill: 954 },
+                { title: 'KHAMEN BREAK', level: 16, flareRank: 'IX', score: 985160, flareSkill: 954 },
+                { title: 'ナイト・オブ・ナイツ', level: 16, flareRank: 'IX', score: 980350, flareSkill: 954 },
+                { title: 'MAX 360', level: 16, flareRank: 'IX', score: 968240, flareSkill: 954 },
+                { title: '†渚の小悪魔ラヴリィ～レイディオ†', level: 16, flareRank: 'IX', score: 992510, flareSkill: 954 },
+                { title: '臆 (dj TAKA Remix)', level: 16, flareRank: 'IX', score: 0, flareSkill: 954 },
+                { title: 'お米の美味しい炊き方、そしてお米を食べることによるその効果。', level: 16, flareRank: 'IX', score: 983110, flareSkill: 954 },
+                { title: 'POSSESSION (20th Anniversary Mix)', level: 16, flareRank: 'IX', score: 984220, flareSkill: 954 },
+                { title: 'ラクガキスト', level: 16, flareRank: 'IX', score: 985720, flareSkill: 954 },
+                { title: '轟け！恋のビーンボール！！', level: 16, flareRank: 'IX', score: 952130, flareSkill: 954 },
+                { title: '海神', level: 16, flareRank: 'IX', score: 987550, flareSkill: 954 },
+                { title: 'ナイト・オブ・ナイツ', level: 15, flareRank: 'IX', score: 990730, flareSkill: 924 },
+                { title: 'ロストワンの号哭', level: 15, flareRank: 'IX', score: 988140, flareSkill: 924 },
+                { title: '御千手メディテーション', level: 15, flareRank: 'IX', score: 990620, flareSkill: 924 },
+                { title: 'Samurai Shogun vs. Master Ninja', level: 15, flareRank: 'IX', score: 992160, flareSkill: 924 },
+                { title: 'シュレーディンガーの猫', level: 15, flareRank: 'IX', score: 992740, flareSkill: 924 },
+                { title: 'Daily Lunch Special', level: 14, flareRank: 'EX', score: 993290, flareSkill: 920 }
+            ],
+            GOLD: [
+                { title: 'AI', level: 16, flareRank: 'EX', score: 976760, flareSkill: 992 },
+                { title: 'In the past', level: 16, flareRank: 'EX', score: 995950, flareSkill: 992 },
+                { title: 'DIGITALIZER', level: 17, flareRank: 'IX', score: 983860, flareSkill: 977 },
+                { title: 'DUAL STRIKER', level: 17, flareRank: 'IX', score: 986840, flareSkill: 977 },
+                { title: 'Electronic Sports Complex', level: 17, flareRank: 'IX', score: 974000, flareSkill: 977 },
+                { title: 'Megalara Garuda', level: 17, flareRank: 'IX', score: 989210, flareSkill: 977 },
+                { title: 'Snow Garland Fairy', level: 17, flareRank: 'IX', score: 974210, flareSkill: 977 },
+                { title: 'Better Than Me', level: 15, flareRank: 'EX', score: 987410, flareSkill: 960 },
+                { title: 'City Never Sleeps', level: 15, flareRank: 'EX', score: 996000, flareSkill: 960 },
+                { title: 'HARD BRAIN', level: 15, flareRank: 'EX', score: 996000, flareSkill: 960 },
+                { title: 'ホーンテッド★メイドランチ', level: 15, flareRank: 'EX', score: 998340, flareSkill: 960 },
+                { title: 'HyperTwist', level: 15, flareRank: 'EX', score: 994960, flareSkill: 960 },
+                { title: 'Inner Spirit -GIGA HiTECH MIX-', level: 15, flareRank: 'EX', score: 994020, flareSkill: 960 },
+                { title: '狂水一華', level: 15, flareRank: 'EX', score: 993950, flareSkill: 960 },
+                { title: 'little steps', level: 15, flareRank: 'EX', score: 0, flareSkill: 960 },
+                { title: '未来 (ダ) FUTURE', level: 15, flareRank: 'EX', score: 993700, flareSkill: 960 },
+                { title: 'おーまい！らぶりー！すうぃーていだーりん！', level: 15, flareRank: 'EX', score: 994890, flareSkill: 960 },
+                { title: 'Re:GENERATION', level: 15, flareRank: 'EX', score: 993360, flareSkill: 960 },
+                { title: 'Aftermath', level: 16, flareRank: 'IX', score: 989470, flareSkill: 954 },
+                { title: 'ALBIDA', level: 16, flareRank: 'IX', score: 978830, flareSkill: 954 },
+                { title: 'ALPACORE', level: 16, flareRank: 'IX', score: 980390, flareSkill: 954 },
+                { title: 'Euphoric Fragmentation', level: 16, flareRank: 'IX', score: 988910, flareSkill: 954 },
+                { title: 'Firestorm', level: 16, flareRank: 'IX', score: 914240, flareSkill: 954 },
+                { title: 'KING', level: 16, flareRank: 'IX', score: 986140, flareSkill: 954 },
+                { title: 'キャロラ衛星の軌跡', level: 16, flareRank: 'IX', score: 988820, flareSkill: 954 },
+                { title: 'Lightspeed', level: 16, flareRank: 'IX', score: 994190, flareSkill: 954 },
+                { title: 'Megalara Garuda', level: 16, flareRank: 'IX', score: 992130, flareSkill: 954 },
+                { title: 'メンタンピンドラドラ', level: 16, flareRank: 'IX', score: 979680, flareSkill: 954 },
+                { title: 'Metamorphic', level: 16, flareRank: 'IX', score: 984540, flareSkill: 954 },
+                { title: 'ノープラン・デイズ', level: 16, flareRank: 'IX', score: 986030, flareSkill: 954 }
+            ]
+        };
+
+        function calculateCategoryTotal(category) {
+            return songs[category]
+                .sort((a, b) => b.flareSkill - a.flareSkill)
+                .slice(0, 30)
+                .reduce((sum, song) => sum + song.flareSkill, 0);
+        }
+
+        function calculateGrade(total) {
+            if (total >= 90000) return 'WORLD';
+            if (total >= 86250) return 'SUN+++';
+            if (total >= 82500) return 'SUN++';
+            if (total >= 78750) return 'SUN+';
+            if (total >= 75000) return 'SUN';
+            if (total >= 71250) return 'NEPTUNE+++';
+            if (total >= 67500) return 'NEPTUNE++';
+            if (total >= 63750) return 'NEPTUNE+';
+            if (total >= 60000) return 'NEPTUNE';
+            if (total >= 56250) return 'URANUS+++';
+            if (total >= 52500) return 'URANUS++';
+            if (total >= 48750) return 'URANUS+';
+            if (total >= 45000) return 'URANUS';
+            return 'NONE';
+        }
+
+        function renderTable(category) {
+            const total = calculateCategoryTotal(category);
+            let html = `<h2>${category} - トータルフレアスキル: ${total}</h2>
+                        <table><thead><tr><th>曲名</th><th>レベル</th><th>フレアランク</th><th>スコア</th><th>フレアスキル</th></tr></thead><tbody>`;
+            
+            songs[category]
+                .sort((a, b) => b.flareSkill - a.flareSkill)
+                .slice(0, 30)
+                .forEach(song => {
+                    html += `<tr>
+                        <td>${song.title}</td>
+                        <td>${song.level}</td>
+                        <td>${song.flareRank}</td>
+                        <td>${song.score}</td>
+                        <td>${song.flareSkill}</td>
+                    </tr>`;
+                });
+            html += '</tbody></table>';
+            return html;
+        }
+
+        function renderTables() {
+            const tablesDiv = document.getElementById('tables');
+            const categories = ['CLASSIC', 'WHITE', 'GOLD'];
+            let totalFlareSkill = 0;
+
+            categories.forEach(category => {
+                tablesDiv.innerHTML += renderTable(category);
+                totalFlareSkill += calculateCategoryTotal(category);
+            });
+
+            document.getElementById('totalFlareSkill').textContent = `トータルフレアスキル: ${totalFlareSkill}`;
+            document.getElementById('grade').textContent = `グレード: ${calculateGrade(totalFlareSkill)}`;
+        }
+
+        renderTables();
+    </script>
+</body>
+</html>
